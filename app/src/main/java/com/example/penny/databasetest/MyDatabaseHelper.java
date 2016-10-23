@@ -19,7 +19,8 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     + "id integer primary key autoincrement,"
             +  "author text,"
             + "price real,"
-            + "name text)";
+            + "name text,"
+            +"category_id integer)";
     public static final String CREATE_CATEGORY = "create table category("
             +"id integer primary key autoincrement,"
             +"category_name text,"
@@ -40,9 +41,12 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public  void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
         //如果这两张表已经存在就删除掉重新建立表格
-        db.execSQL("drop table if exists Book");
-        db.execSQL("drop table if exists Category");
-        onCreate(db);
-
+        switch (oldVersion){
+            case 1:
+                db.execSQL(CREATE_CATEGORY);
+            case 2:
+                db.execSQL("alter table Book add column category_id integer");
+                default:
+        }
     }
 }
