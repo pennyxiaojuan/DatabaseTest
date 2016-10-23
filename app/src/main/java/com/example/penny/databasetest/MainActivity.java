@@ -11,7 +11,8 @@ public class MainActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dbHelper = new MyDatabaseHelper(this, "BookStore.db",null,1);
+        //修改数据库的版本号，表示对数据库进行升级
+        dbHelper = new MyDatabaseHelper(this, "BookStore.db",null,2);
         Button createDatabase = (Button) findViewById(R.id.create_database);
         createDatabase.setOnClickListener(new View.OnClickListener() {
             @Override
