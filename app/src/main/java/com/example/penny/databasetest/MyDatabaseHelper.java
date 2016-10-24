@@ -3,7 +3,6 @@ package com.example.penny.databasetest;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 /**
  Step 1：自定义一个类继承SQLiteOpenHelper类
@@ -36,7 +35,6 @@ public class MyDatabaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db){
         db.execSQL(CREATE_BOOK);
         db.execSQL(CREATE_CATEGORY);
-        Toast.makeText(mContext,"Create succeeded",Toast.LENGTH_SHORT).show();
     }
     @Override
     public  void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
